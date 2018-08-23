@@ -9,7 +9,19 @@
 <body <?php body_class(); ?>>
   <header id="top">
     <h1>
-      <a href="index.html"><img src="images/logo.gif" alt="日本の景色写真展" width="258" height="64"></a>
+      <a href="index.html">
+				<?php
+				$custom_logo_id = get_theme_mod( 'custom_logo' );
+				$image = wp_get_attachment_image_src( $custom_logo_id, 'full' );
+				$format  = '<img';
+				$format .= ' src="'    . $image[0] . '"';
+				$format .= ' width="'  . $image[1] . '"';
+				$format .= ' height="' . $image[2] . '"';
+				$format .= ' alt="'    . get_bloginfo( 'name' ) . '">';
+				echo $format;
+			?>
+			
+			</a>
     </h1>
   </header>
   <nav>
@@ -20,8 +32,3 @@
       <li class="nav_tickets"><a href="tickets.html">前売り券申し込み</a></li>
     </ul>
   </nav>
-
-
-
-</body>
-</html>
